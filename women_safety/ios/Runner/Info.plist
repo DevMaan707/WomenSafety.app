@@ -7,6 +7,8 @@
 	<key>CFBundleDisplayName</key>
 	<string>Women Safety</string>
 	<key>CFBundleExecutable</key>
+	<key>NSMicrophoneUsageDescription</key>
+<string>Microphone access is required for audio recording.</string>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
