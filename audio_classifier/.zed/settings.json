@@ -1,0 +1,10 @@
+{
+  "language_servers": {
+    "python": {
+      "command": "/opt/anaconda3/envs/sathee/bin/python",
+      "environment": {
+        "PYTHONPATH": "${workspaceRoot}"
+      }
+    }
+  }
+}

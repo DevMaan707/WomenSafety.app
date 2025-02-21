@@ -1,0 +1,16 @@
+numpy>=1.19.2
+pandas>=1.2.0
+librosa>=0.8.1
+tensorflow>=2.6.0
+scikit-learn>=0.24.2
+tqdm>=4.62.3
+soundfile>=0.10.3
+numba>=0.53.1
+scipy>=1.7.1
+matplotlib>=3.4.3
+seaborn>=0.11.2
+audioread>=2.1.9
+resampy>=0.2.2
+pooch>=1.5.2
+llvmlite>=0.37.0
+joblib>=1.0.1
