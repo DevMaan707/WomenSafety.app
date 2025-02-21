@@ -26,4 +26,5 @@ func SetupRoutes(app *fiber.App) {
 	api.Get("/reports", handlers.GetReports)
 	api.Post("/sos", handlers.TriggerSOS)
 	api.Get("/sos", handlers.GetSOSAlerts)
+	api.Post("/sns_register", handlers.RegisterSNS)
 }

@@ -5,9 +5,9 @@ import "time"
 type Role string
 
 type ResponseHTTP struct {
-	Success bool        `json:"success"`
-	Data    interface{} `json:"data"`
-	Message string      `json:"message"`
+	Success bool   `json:"success"`
+	Data    any    `json:"data"`
+	Message string `json:"message"`
 }
 
 const (
@@ -16,15 +16,17 @@ const (
 )
 
 type User struct {
-	ID        string    `json:"id"         db:"id"`
-	Name      string    `json:"name"       db:"name"`
-	Age       int       `json:"age"        db:"age"`
-	Language  string    `json:"language"   db:"language"`
-	Gender    string    `json:"gender"     db:"gender"`
-	Aadhaar   string    `json:"aadhaar"    db:"aadhaar"`
-	Password  string    `json:"-"          db:"password"`
-	Role      Role      `json:"role"       db:"role"`
-	CreatedAt time.Time `json:"created_at" db:"created_at"`
+	TableName string    `karma_table:"users"`
+	Id        string    `json:"id" karma:"primary_key"`
+	Name      string    `json:"name"`
+	Age       int       `json:"age"`
+	Language  string    `json:"language"`
+	Gender    string    `json:"gender"`
+	Aadhaar   string    `json:"aadhaar"`
+	Password  string    `json:"password"`
+	Role      Role      `json:"role"`
+	SnsArn    string    `json:"sns_arn"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 type RiskLocation struct {

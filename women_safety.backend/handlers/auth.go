@@ -48,7 +48,7 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	user := database.User{
-		ID:        utils.GenerateUUID(),
+		Id:        utils.GenerateUUID(),
 		Name:      req.Name,
 		Age:       req.Age,
 		Language:  req.Language,
@@ -63,7 +63,7 @@ func Register(c *fiber.Ctx) error {
 		`
         INSERT INTO users (id, name, age, language, gender, aadhaar, password, role, created_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-		user.ID,
+		user.Id,
 		user.Name,
 		user.Age,
 		user.Language,
@@ -81,7 +81,7 @@ func Register(c *fiber.Ctx) error {
 
 	return c.Status(201).JSON(database.ResponseHTTP{
 		Success: true,
-		Data:    user.ID,
+		Data:    user.Id,
 		Message: "User created successfully",
 	})
 }
@@ -113,7 +113,7 @@ func Login(c *fiber.Ctx) error {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"user_id": user.ID,
+		"user_id": user.Id,
 		"role":    user.Role,
 		"exp":     time.Now().Add(time.Hour * 24).Unix(),
 	})
