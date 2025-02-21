@@ -10,18 +10,14 @@ import (
 )
 
 func PostReport(c *fiber.Ctx) error {
-	// Parse form data
 	report := new(database.Report)
 	if err := c.BodyParser(report); err != nil {
 		return c.Status(400).JSON(fiber.Map{
 			"error": "Invalid request body",
 		})
 	}
-
-	// Handle file upload
 	file, err := c.FormFile("image")
 	if err == nil {
-		// File was provided, save it
 		imageURL, err := utils.SaveImage(file)
 		if err != nil {
 			return c.Status(400).JSON(fiber.Map{
@@ -35,15 +31,12 @@ func PostReport(c *fiber.Ctx) error {
 	report.ReportedBy = c.Locals("user_id").(string)
 	report.Status = "PENDING"
 	report.CreatedAt = time.Now()
-
-	// Insert into database
 	_, err = database.DB.Exec(`
         INSERT INTO reports (id, image_url, latitude, longitude, description, reported_by, status, created_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
 		report.ID, report.ImageURL, report.Latitude, report.Longitude, report.Description,
 		report.ReportedBy, report.Status, report.CreatedAt)
 	if err != nil {
-		// If there was an error saving to database, delete the uploaded image
 		if report.ImageURL != "" {
 			_ = utils.DeleteImage(report.ImageURL)
 		}
@@ -54,8 +47,6 @@ func PostReport(c *fiber.Ctx) error {
 
 	return c.Status(201).JSON(report)
 }
-
-// Optional: Add function to serve static files
 func SetupStaticFiles(app *fiber.App) {
 	app.Static("/uploads", "./uploads")
 }

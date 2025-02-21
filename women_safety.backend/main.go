@@ -11,29 +11,18 @@ import (
 )
 
 func main() {
-	// Load configuration
 	cfg, err := config.LoadConfig()
 	if err != nil {
 		log.Fatal("Failed to load configuration:", err)
 	}
-
-	// Initialize database
 	err = database.InitDB(cfg.DBUrl)
 	if err != nil {
 		log.Fatal("Failed to initialize database:", err)
 	}
-
-	// Create Fiber app
 	app := fiber.New(fiber.Config{
-		BodyLimit: 10 * 1024 * 1024, // 10MB limit for file uploads
+		BodyLimit: 10 * 1024 * 1024,
 	})
-
-	// Setup static file serving
 	app.Static("/uploads", "./uploads")
-
-	// Setup routes
 	routes.SetupRoutes(app)
-
-	// Start server
 	log.Fatal(app.Listen(":" + cfg.Port))
 }
