@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"strings"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -35,6 +36,15 @@ func Register(c *fiber.Ctx) error {
 		return c.Status(500).JSON(fiber.Map{
 			"error": "Failed to hash password",
 		})
+	}
+
+	defaultRole := "user"
+	if req.Role == "" {
+		req.Role = string(defaultRole)
+	} else if strings.ToLower(req.Role) == string(database.RoleUser) {
+		req.Role = string(database.RoleUser)
+	} else if strings.ToLower(req.Role) == string(database.RoleAuthority) {
+		req.Role = string(database.RoleAuthority)
 	}
 
 	user := database.User{

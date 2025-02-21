@@ -1,0 +1,18 @@
+meta {
+  name: login
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:5969/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "aadhaar": "1234567890",
+    "password": "password123"
+  }
+}

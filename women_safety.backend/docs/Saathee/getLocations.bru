@@ -1,0 +1,15 @@
+meta {
+  name: getLocations
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:5969/api/locations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDAyMzQ2NTgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6Il9uMzFrdGQ0aGkifQ.oCaAvQN1RSK756w58RzWF3LhSwY5LITF8Oqs8y0GMkw
+}

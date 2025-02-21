@@ -1,0 +1,23 @@
+meta {
+  name: postLocations
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:5969/api/locations
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDAyMzQ2NTgsInJvbGUiOiJ1c2VyIiwidXNlcl9pZCI6Il9uMzFrdGQ0aGkifQ.oCaAvQN1RSK756w58RzWF3LhSwY5LITF8Oqs8y0GMkw
+}
+
+body:json {
+  {
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "risk_level": "HIGH"
+  }
+}

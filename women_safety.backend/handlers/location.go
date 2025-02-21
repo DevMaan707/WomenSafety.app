@@ -18,7 +18,11 @@ func GetLocations(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.JSON(locations)
+	return c.JSON(database.ResponseHTTP{
+		Success: true,
+		Data:    locations,
+		Message: "OK",
+	})
 }
 
 func PostLocation(c *fiber.Ctx) error {

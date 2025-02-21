@@ -4,8 +4,20 @@ meta {
   seq: 3
 }
 
-get {
-  url: http://localhost:5969/health
-  body: none
+post {
+  url: http://localhost:5969/register
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "name": "john dudu",
+    "age": 69,
+    "language": "English",
+    "gender": "all of them",
+    "aadhaar": "1234567890",
+    "role": "user",
+    "password": "password123"
+  }
 }

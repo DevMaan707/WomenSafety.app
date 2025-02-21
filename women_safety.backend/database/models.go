@@ -11,8 +11,8 @@ type ResponseHTTP struct {
 }
 
 const (
-	RoleUser      Role = "USER"
-	RoleAuthority Role = "AUTHORITY"
+	RoleUser      Role = "user"
+	RoleAuthority Role = "authority"
 )
 
 type User struct {
